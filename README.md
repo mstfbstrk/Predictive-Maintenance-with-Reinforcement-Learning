@@ -7,7 +7,8 @@ Endüstri 4.0 süreçlerinde, üretim hatlarının duruş sürelerini minimize e
 
 Projede, Markov Karar Süreci (MDP) altyapısı üzerine kurulu bir simülasyon ortamı kullanılmıştır. Model, sensör verilerini sürekli gözlemleyerek sistemin aşınma seviyesini analiz eder.
 
-    2.1. Durum Uzayı (State Space)
+2.1. Durum Uzayı (State Space)
+
 Sensörlerden gelen karmaşık veriler, mühendislik yaklaşımlarıyla 4 ana duruma indirgenmiştir:
 
 🟢 Yeni (State 0): İdeal çalışma koşulları.
@@ -18,7 +19,8 @@ Sensörlerden gelen karmaşık veriler, mühendislik yaklaşımlarıyla 4 ana du
 
 🔴 Kritik (State 3): Yüksek arıza riski.
 
-    2.2. Veri Kaynağı
+2.2. Veri Kaynağı
+
 Analizlerde, 10.000 satırlık sentetik ancak gerçekçi değerlerden oluşan AI4I 2020 Predictive Maintenance veri seti kullanılmıştır. Model; sıcaklık farkı, tork ve takım aşınması gibi çoklu parametreleri eş zamanlı olarak değerlendirir.
 
 3. Q-Learning ve Ödül Mekanizması
@@ -33,10 +35,12 @@ Makine Arızası	      -1000	            Beklenmedik duruş ve hasar cezası.
 
 Eğitim sürecinde (25.000 bölüm), ajanın öğrenme eğrisi ve karar mekanizması üzerinde yapılan gözlemler şu sonuçları ortaya koymuştur:
 
-    4.1. Öğrenme Eğrisi ve Trend Analizi
+4.1. Öğrenme Eğrisi ve Trend Analizi
+
 Eğitimin başlangıç evrelerinde ajan, makineyi patlatana kadar çalıştırma eğilimi gösterirken (yüksek ceza), ilerleyen evrelerde toplam ödülünü artırmak için stratejik bakımlar gerçekleştirmeye başlamıştır.
 
-    4.2. Optimal Politika Çıkarımı
+4.2. Optimal Politika Çıkarımı
+
 Eğitilmiş Q-Table sonuçlarına göre, ajanın geliştirdiği nihai strateji şöyledir:
 
 Yeni & Normal Durumlar: Kesintisiz operasyon (Devam Et).
