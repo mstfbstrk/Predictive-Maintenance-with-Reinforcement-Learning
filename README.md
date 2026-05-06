@@ -59,11 +59,14 @@ Bu çalışma, RL algoritmalarının endüstriyel bakım süreçlerinde maliyet 
 <img width="437" height="275" alt="image" src="https://github.com/user-attachments/assets/50da327c-7872-4d6a-8a0f-4942f496314b" />
 
 Kurulum ve Çalıştırma
+
 1-)Gerekli kütüphaneleri yükleyin:
+
 pip install numpy pandas matplotlib gymnasium
 
 2-)ai4i2020.csv dosyasının proje dizininde olduğundan emin olun.
 
 3-)Python scriptini çalıştırın:
+
 python maintenance_rl.py
 
