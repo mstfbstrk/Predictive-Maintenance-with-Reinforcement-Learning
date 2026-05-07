@@ -1,7 +1,7 @@
-# Bir Pekiştirmeli Öğrenme Yaklaşımı: Makine Kestirimci Bakım Stratejilerinin Optimizasyonu
+# Pekiştirmeli Öğrenme ile Makine Kestirimci Bakım Uygulaması
 1. Giriş ve Problem Tanımı
 
-Endüstri 4.0 süreçlerinde, üretim hatlarının duruş sürelerini minimize etmek operasyonel verimlilik için kritiktir. Bu proje, üretim hattında çalışan bir motorun sensör verilerini analiz ederek "ne zaman bakım yapılmalı?" sorusuna yanıt arayan bir karar destek mekanizması sunar. Geleneksel periyodik bakım yerine, makinenin anlık durumuna göre hareket eden Kestirimci Bakım (Predictive Maintenance) stratejisi, Reinforcement Learning (RL) prensipleriyle optimize edilmiştir.
+Üretim hatlarının duruş sürelerini minimize etmek operasyonel verimlilik için kritiktir. Bu proje, üretim hattında çalışan bir motorun sensör verilerini analiz ederek "ne zaman bakım yapılmalı?" sorusuna yanıt arayan bir karar destek mekanizması sunar. Geleneksel periyodik bakım yerine, makinenin anlık durumuna göre hareket eden Kestirimci Bakım (Predictive Maintenance) stratejisi, Reinforcement Learning (RL) prensipleriyle optimize edilmiştir.
 
 2. Metodoloji ve Ortam Tasarımı
 
@@ -21,15 +21,21 @@ Sensörlerden gelen karmaşık veriler, mühendislik yaklaşımlarıyla 4 ana du
 
 2.2. Veri Kaynağı
 
-Analizlerde, 10.000 satırlık sentetik ancak gerçekçi değerlerden oluşan AI4I 2020 Predictive Maintenance veri seti kullanılmıştır. Model; sıcaklık farkı, tork ve takım aşınması gibi çoklu parametreleri eş zamanlı olarak değerlendirir.
+Analizlerde, 10.000 satırlık sentetik ancak gerçekçi değerlerden oluşan AI4I 2020 Predictive Maintenance veri seti kullanılmıştır. Model; sıcaklık farkı, tork ve takım aşınması gibi çoklu parametreleri eş zamanlı olarak değerlendirir. Burada sensör verileri birleştirelerek 4 farklı duruma indirilmiştir.
+
+*Sıcaklık Farkı>11.0 veya tork>60 ya da aşınma>200    =>Kritik
+*Sıcaklık Farkı>10.0 veya tork>50 ya da aşınma>150    =>Uyarı
+*Sıcaklık Farkı>8.5 veya aşınma>80                    =>Normal     
+
 
 3. Q-Learning ve Ödül Mekanizması
 
 Ajanın stratejisi, Q-Learning algoritması kullanılarak eğitilmiştir. Modelin "riskten kaçınan" bir tutum sergilemesi için ödül fonksiyonu şu şekilde ölçeklendirilmiştir:
-Olay	                Ödül (Reward)	    Açıklama
-Başarılı Çalışma	    +50	              Sistemin aktif kalması için teşvik ödülü
-Planlı Bakım	        -20	              Kontrollü duruş maliyeti
-Makine Arızası	      -1000	            Beklenmedik duruş ve hasar cezası.
+Olay	     Devam Et     Ödül (Reward)	   
+Yeni	      +10	        -50                      
+Normal	    +5	        -30                    
+Uyarı	      +1          -10               
+Kritik      -100        +50
 
 4. Deneysel Bulgular ve Analiz
 
@@ -43,20 +49,27 @@ Eğitimin başlangıç evrelerinde ajan, makineyi patlatana kadar çalıştırma
 
 Eğitilmiş Q-Table sonuçlarına göre, ajanın geliştirdiği nihai strateji şöyledir:
 
-Yeni & Normal Durumlar: Kesintisiz operasyon (Devam Et).
+Yeni & Normal Durumlar: Devam et.
 
-Uyarı Durumu: Risk/Kazanç analizi yapılarak operasyona devam.
+Uyarı Durumu: Risk/Kazanç analizi yapılarak bakım yap.
 
-Kritik Durum: Hemen müdahale (Bakım Yap).
+Kritik Durum: Hemen müdahale için bakım yap.
 
 5. Sonuç
 
 Bu çalışma, RL algoritmalarının endüstriyel bakım süreçlerinde maliyet optimizasyonu ve risk yönetimi için güçlü bir araç olabileceğini göstermektedir. Geliştirilen ajan, ağır cezadan (arıza) kaçınmak için küçük maliyetleri (bakım) kabul etmeyi matematiksel olarak öğrenmiştir.
 
-<img width="4470" height="1767" alt="egitim_grafikleri" src="https://github.com/user-attachments/assets/e4a4e660-a8ef-4043-bc3b-ed96906a0de3" />
+<img width="4470" height="1767" alt="egitim_grafikleri" src="https://github.com/user-attachments/assets/6f47f6c6-9e81-4e48-aaa5-f4e76a7935b6" />
 
 
-<img width="437" height="275" alt="image" src="https://github.com/user-attachments/assets/50da327c-7872-4d6a-8a0f-4942f496314b" />
+
+<img width="459" height="287" alt="image" src="https://github.com/user-attachments/assets/1944c2b8-aea2-4b28-b933-3fdfabe7005f" />
+
+
+
+<img width="400" height="200" alt="motor_bakim_simulasyon" src="https://github.com/user-attachments/assets/b482dac2-7e7b-405b-a8ec-aab4b2d82543" />
+
+
 
 Kurulum ve Çalıştırma
 
