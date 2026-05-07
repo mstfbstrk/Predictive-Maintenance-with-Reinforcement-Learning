@@ -33,7 +33,7 @@ Analizlerde, 10.000 satırlık sentetik ancak gerçekçi değerlerden oluşan AI
 
 Ajanın stratejisi, Q-Learning algoritması kullanılarak eğitilmiştir. Modelin "riskten kaçınan" bir tutum sergilemesi için ödül fonksiyonu şu şekilde ölçeklendirilmiştir:
 
-Olay	     Devam Et     Ödül (Reward)	   
+Olay	     Devam Et     Bakım Yap  
 Yeni	      +10	        -50                      
 Normal	    +5	        -30                    
 Uyarı	      +1          -10               
