@@ -23,6 +23,7 @@ Sensörlerden gelen karmaşık veriler, mühendislik yaklaşımlarıyla 4 ana du
 
 Analizlerde, 10.000 satırlık sentetik ancak gerçekçi değerlerden oluşan AI4I 2020 Predictive Maintenance veri seti kullanılmıştır. Model; sıcaklık farkı, tork ve takım aşınması gibi çoklu parametreleri eş zamanlı olarak değerlendirir. Burada sensör verileri birleştirelerek 4 farklı duruma indirilmiştir.
 
+
 *Sıcaklık Farkı>11.0 veya tork>60 ya da aşınma>200    =>Kritik
 *Sıcaklık Farkı>10.0 veya tork>50 ya da aşınma>150    =>Uyarı
 *Sıcaklık Farkı>8.5 veya aşınma>80                    =>Normal     
@@ -31,6 +32,7 @@ Analizlerde, 10.000 satırlık sentetik ancak gerçekçi değerlerden oluşan AI
 3. Q-Learning ve Ödül Mekanizması
 
 Ajanın stratejisi, Q-Learning algoritması kullanılarak eğitilmiştir. Modelin "riskten kaçınan" bir tutum sergilemesi için ödül fonksiyonu şu şekilde ölçeklendirilmiştir:
+
 Olay	     Devam Et     Ödül (Reward)	   
 Yeni	      +10	        -50                      
 Normal	    +5	        -30                    
